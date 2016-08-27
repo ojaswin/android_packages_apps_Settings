@@ -9,10 +9,6 @@
     <string name="disable_fc_notifications_title">Disable FC Notifications</string>
     <string name="disable_fc_notifications_summary">This will hide all force close notificaitons</string>
 
-    <!-- Force expanded notifications -->
-    <string name="force_expanded_notifications_title">Force Expanded Notifications</string>
-    <string name="force_expanded_notifications_summary">Available only for apps that support expanded notifications</string>
-
     <!-- Disabling immersive mode messages -->
     <string name="disable_immersive_message_title">Disable Immersive Mode Messages</string>
     <string name="disable_immersive_message_summary">This will hide all Immersive Mode Messages</string>
@@ -48,6 +44,10 @@
     <string name="smart_pulldown_dismissable">No dismissable</string>
     <string name="smart_pulldown_persistent">No persistent</string>
     <string name="smart_pulldown_all">No dismissable or persistent</string>
+
+    <!-- Force expanded notifications -->
+    <string name="force_expanded_notifications_title">Force Expanded Notifications</string>
+    <string name="force_expanded_notifications_summary">Available only for apps that support expanded notifications</string>
 
     <!-- Volume Steps -->
     <string name="volume_steps_title">Volume steps</string>
