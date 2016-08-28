@@ -49,6 +49,10 @@
     <string name="force_expanded_notifications_title">Force Expanded Notifications</string>
     <string name="force_expanded_notifications_summary">Available only for apps that support expanded notifications</string>
 
+    <!-- Vibration Toggle for Double Tap Power Button for Camera -->
+    <string name="dbl_tap_vib_title">Double tap power for camera vibration</string>
+    <string name="dbl_tap_vib_summary">Vibrate on double tap of power button when enabled</string>
+
     <!-- Volume Steps -->
     <string name="volume_steps_title">Volume steps</string>
     <string name="volume_steps_alarm_title">Volume steps: Alarm</string>
