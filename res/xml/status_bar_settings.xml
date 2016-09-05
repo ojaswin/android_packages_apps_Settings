@@ -68,6 +68,11 @@
         android:summary="@string/status_bar_notif_count_summary"
         android:defaultValue="false" />
 
+   <SwitchPreference
+        android:key="enable_task_manager"
+        android:title="@string/enable_task_manager_title"
+        android:summary="@string/enable_task_manager_summary" />
+
     <ListPreference
         android:key="qs_quick_pulldown"
         android:title="@string/status_bar_quick_qs_pulldown_title"
