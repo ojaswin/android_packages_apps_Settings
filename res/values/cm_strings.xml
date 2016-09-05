@@ -66,7 +66,7 @@
     <string name="build_date_default" translatable="false">2015-01-01-0000</string>
 
     <!-- About phone screen, My Name -->
-    <string name="made_by">Developer's Name</string>
+    <string name="made_by">Developer</string>
     <string name="my_name">Ojaswin Singh</string>
 
     <!-- CM Updater -->
