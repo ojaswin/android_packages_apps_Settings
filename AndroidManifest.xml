@@ -2185,12 +2185,6 @@
             android:launchMode="singleTop"
             android:theme="@style/CryptKeeperBlankTheme"
         />
-    
-        <receiver android:name="com.android.settings.cardinal.util.OnBoot">
-             <intent-filter>
-                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
-             </intent-filter>
-         </receiver>
 
         <activity android:name=".CryptKeeperConfirm$Blank"
             android:immersive="true"
