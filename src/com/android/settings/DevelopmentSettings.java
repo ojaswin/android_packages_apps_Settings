@@ -83,10 +83,15 @@ import com.android.settings.Settings.AppOpsSummaryActivity;
 import com.android.settings.fuelgauge.InactiveApps;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.internal.util.du.AbstractAsyncSuCMDProcessor;
+import com.android.internal.util.du.CMDProcessor;
+import com.android.internal.util.du.Helpers;
 import com.android.settings.widget.SwitchBar;
 import cyanogenmod.providers.CMSettings;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -183,6 +188,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     private static final String UPDATE_RECOVERY_KEY = "update_recovery";
     private static final String UPDATE_RECOVERY_PROPERTY = "persist.sys.recovery_update";
+
+    private static final String SELINUX = "selinux";
 
     private static final String IMMEDIATELY_DESTROY_ACTIVITIES_KEY
             = "immediately_destroy_activities";
@@ -304,6 +311,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private SwitchPreference mDevelopmentShortcut;
 
     private SwitchPreference mColorTemperaturePreference;
+
+    private SwitchPreference mSelinux;
 
     private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
 
@@ -471,6 +480,18 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 SHOW_ALL_ANRS_KEY);
         mAllPrefs.add(mShowAllANRs);
         mResetSwitchPrefs.add(mShowAllANRs);
+
+        //SELinux
+        mSelinux = (SwitchPreference) findPreference(SELINUX);
+        mSelinux.setOnPreferenceChangeListener(this);
+
+        if (CMDProcessor.runShellCommand("getenforce").getStdout().contains("Enforcing")) {
+            mSelinux.setChecked(true);
+            mSelinux.setSummary(R.string.selinux_enforcing_title);
+        } else {
+            mSelinux.setChecked(false);
+            mSelinux.setSummary(R.string.selinux_permissive_title);
+        }
 
         mKillAppLongpressBack = findAndInitSwitchPref(KILL_APP_LONGPRESS_BACK);
 
@@ -2187,7 +2208,16 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         } else if (preference == mKeepScreenOn) {
             writeStayAwakeOptions(newValue);
             return true;
-        }
+        } else if (preference == mSelinux) {
+            if (newValue.toString().equals("true")) {
+                CMDProcessor.runSuCommand("setenforce 1");
+                mSelinux.setSummary(R.string.selinux_enforcing_title);
+            } else if (newValue.toString().equals("false")) {
+                CMDProcessor.runSuCommand("setenforce 0");
+                mSelinux.setSummary(R.string.selinux_permissive_title);
+            }
+            return true;
+          }
         return false;
     }
 
