@@ -148,12 +148,6 @@
                 android:title="@string/build_number"
                 android:summary="@string/device_info_default"/>
 
-       <!-- About phone screen, My Name -->
-        <Preference android:key="made_by"
-                style="?android:preferenceInformationStyle"
-                android:title="@string/made_by"
-                android:summary="@string/my_name"/>
-
         <!-- SELinux status information -->
         <Preference android:key="selinux_status"
                 style="?android:preferenceInformationStyle"
